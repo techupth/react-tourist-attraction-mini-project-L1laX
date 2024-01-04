@@ -3,7 +3,7 @@ import ReactIcon from "../../assets/react.svg";
 
 const SearchList = ({ data, getTags }) => {
   return (
-    <section className="flex p-5 m-5  xl:w-[75rem]">
+    <section className="flex p-5 m-5  xl:w-[75rem] ">
       <div className="image-section pr-5 flex justify-center items-center">
         <img
           src={data.photos[0]}
@@ -11,7 +11,7 @@ const SearchList = ({ data, getTags }) => {
           className="rounded-xl w-[25rem] "
         />
       </div>
-      <div className="content-section flex flex-col gap-2">
+      <div className="content-section flex flex-col gap-2 w-full">
         <a href={data.url} target="_blank" className="text-3xl">
           {data.title}
         </a>
@@ -30,21 +30,28 @@ const SearchList = ({ data, getTags }) => {
               return (
                 <div key={index} className="flex gap-5 text-sm">
                   <p>และ</p>{" "}
-                  <p className="underline text-sm" onClick={getTags}>
+                  <p
+                    className="underline text-sm cursor-pointer"
+                    onClick={getTags}
+                  >
                     {item}
                   </p>
                 </div>
               );
             } else {
               return (
-                <p onClick={getTags} className="underline text-sm" key={index}>
+                <p
+                  onClick={getTags}
+                  className="underline text-sm cursor-pointer"
+                  key={index}
+                >
                   {item}
                 </p>
               );
             }
           })}
         </div>
-        <div className="bottom-content flex justify-between gap-5">
+        <div className="bottom-content flex justify-between gap-5 xl:pr-10">
           <div className="bottom-image flex gap-5">
             {data &&
               data.photos.map((item, index) => {
@@ -64,6 +71,8 @@ const SearchList = ({ data, getTags }) => {
               })}
           </div>
           <img
+            title="Copy link"
+            className="hover:animate-spin cursor-pointer"
             src={ReactIcon}
             alt="Copy-icon"
             onClick={() => {
